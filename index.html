@@ -1,0 +1,529 @@
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/velocity/1.2.1/velocity.min.js"></script>
+<script src="plugins/noframework.waypoints.js"></script>
+<script src="plugins/jquery.mousewheel.js"></script>
+<script src="plugins/jquery.simplr.smoothscroll.js"></script>
+<!DOCTYPE html>
+
+<head>
+	<style type="text/css">
+		.page_1{
+			position: relative;
+			width: 100%;
+			height: 100%;
+		}
+		.page-divider{
+			height: 100%;
+			width: 100%;
+			position: relative;
+		}
+		.page-1-header{
+			z-index: 2;
+			position: absolute;
+			background: black;
+			opacity: .8;
+			height: 10%;
+			width: 100%;
+		}
+
+		.page-2-header{
+			z-index: 4;
+			position: absolute;
+			background: black;
+			opacity: .8;
+			height: 10%;
+			width: 100%;
+		}
+
+		.foreground_1{
+			position: absolute;
+			z-index: 4;
+			width: 100%;
+			height: 75%;
+			top: 90%;
+
+		}
+		.foreground-1-header{
+			position: absolute;
+			background: black;
+			opacity: .8;
+			/*Before wrapped in foreground
+			height: 55%;*/
+			height: 110%;
+			width: 100%;
+			z-index: 1;
+		}
+
+		.foreground-1-middle{
+			position: absolute;
+			background: black;
+			opacity: 1;
+			/*Before wrapped in foreground
+			height: 55%;*/
+			height: 95%;
+			width: 100%;
+			top: 15%;
+			z-index: 2;
+		}
+		.foreground-1-header img{
+			position: absolute;
+			top: 2.5%;
+			left: 0;
+			right: 0;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.foreground-1-footer{
+			position: absolute;
+			background: black;
+			opacity: .8;
+			/*Before wrapped in foreground
+			height: 55%;*/
+			height: 110%;
+			width: 100%;
+			z-index: 2;
+			top: 15%;
+		}
+		
+		.foreground_2{
+			position: absolute;
+			z-index: 4;
+			width: 100%;
+			height: 75%;
+			top: 90%;
+		}
+		.foreground-2-header{
+			position: absolute;
+			background: black;
+			opacity: .8;
+			/*Before wrapped in foreground
+			height: 55%;*/
+			height: 110%;
+			width: 100%;
+			z-index: 1;
+		}
+		.foreground-2-middle{
+			position: absolute;
+			background: black;
+			opacity: 1;
+			/*Before wrapped in foreground
+			height: 55%;*/
+			height: 95%;
+			width: 100%;
+			top: 15%;
+			z-index: 2;
+		}
+		.foreground-2-header img{
+			position: absolute;
+			top: 2.5%;
+			left: 0;
+			right: 0;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.foreground-2-footer{
+			position: absolute;
+			background: black;
+			opacity: .8;
+			/*Before wrapped in foreground
+			height: 55%;*/
+			height: 110%;
+			width: 100%;
+			z-index: 2;
+			top: 15%;
+		}
+		.page_1 h1{
+			font-family: 'Open Sans', sans-serif;
+			/*Awesome White color*/
+			color: #ECEDED;
+			font-size: 128px;
+			position: absolute;
+			top: 40%;
+			left: 0;
+			right: 0;
+			text-align: center;
+			font-weight: 100;
+			margin: 0;
+		}
+
+		.page_1 p{
+			font-family: 'Open Sans', sans-serif;
+			/*Awesome White color*/
+			color: #ECEDED;
+			font-size: 32px;
+			position: absolute;
+			top: 60%;
+			left: 0;
+			right: 0;
+			text-align: center;
+			font-weight: 100;
+			margin: 0;
+		}
+
+		.page_1 button{
+			position: relative;
+			top: 75%;
+			margin-left: auto;
+			margin-right: auto;
+			display: block;
+			text-align: center;
+			font-family: 'Open Sans', sans-serif;
+			font-size: 28px;
+			color: #ECEDED;
+			background-color: #005952;
+			border-color: #ECEDED;
+			text-decoration: none;
+			border-radius: 5;
+			box-shadow: none;
+			padding-top: .5em;
+			padding-bottom: .5em;
+			padding-right: 1.5em;
+			padding-left: 1.5em;
+
+		}
+		.page_2{
+			position: relative;
+			top: 0%;
+			width: 100%;
+			height: 100%;
+		}
+
+
+		.page_2 h1{
+			font-family: 'Open Sans', sans-serif;
+			/*Awesome White color*/
+			color: #ECEDED;
+			font-size: 128px;
+			position: absolute;
+			top: 40%;
+			left: 0;
+			right: 0;
+			text-align: center;
+			font-weight: 100;
+			margin: 0;
+		}
+
+		.page_3{
+			position: relative;
+			width: 100%;
+			height: 100%;
+		}
+
+		.page_3 h1{
+			font-family: 'Open Sans', sans-serif;
+			/*Awesome White color*/
+			color: #ECEDED;
+			font-size: 128px;
+			position: absolute;
+			top: 40%;
+			left: 0;
+			right: 0;
+			text-align: center;
+			font-weight: 100;
+			margin: 0;
+		}
+
+		.landing_background_1 {
+			/*background-size: cover;*/
+			position: fixed;
+			background-size: 100% 100%;
+			width: 100%;
+			height: 100%;
+			z-index: 1;
+			background-image: url(images/landingBackground1.png);
+			background-repeat: no-repeat; 
+		}
+
+		/*For Blue Button*/
+		/* #00S9S2*/
+		.landing_background_2{
+			/*background-size: cover;*/
+			position: fixed;
+			top: 0%;
+			background-size: 100% 100%;
+			width: 100%;
+			height: 130%;
+			z-index: 0;
+			background-image: url(images/landingBackground2.png); 
+			background-repeat: no-repeat;
+		}
+
+		.landing_background_3 {
+			/*background-size: cover;*/
+			background-size: 100% 100%;
+			width: 100%;
+			height: 100%;
+			z-index: 3;
+			background-image: url(images/landingBackground3.png); 
+		}
+
+		body{
+			margin: 0;
+			/*overflow: hidden;*/
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="page_1" class="page_1">
+		<div class="page-1-header">
+		</div>
+		<div class="landing_background_1" id="landing_background_1">
+			<h1> Show your style. </h1>
+			<p> Create your own drinks and share them with your friends </p>
+			<button>Start Mixing</button>
+		</div>
+		<div class="foreground_1" id="foreground">
+			<div class="foreground-1-header" id="foreground_header">
+				<img src="images/down_arrow.png">
+			</div>
+			<div class="foreground-1-middle" id="foreground-1-middle">
+			</div>
+			<div class="foreground-1-footer">
+			</div>
+		</div>
+	</div>
+
+	<div id="page_2" class ="page_2">
+		<div class="landing_background_2" id="landing_background_2">
+			<h1> Mix a little bit ;). </h1>
+		</div>
+		<div class="page-divider">
+		</div>
+		<div class="foreground_2" id="foreground_2">
+			<div class="foreground-2-header">
+				<img src="images/down_arrow.png">
+			</div>
+			<div class="foreground-2-middle">
+			</div>
+			<div class="foreground-2-footer">
+			</div>
+		</div>
+	</div>
+	<div id="page_3" class="page_3">
+		<div class="landing_background_3">
+		</div>
+	</div>
+</body>
+
+<script>
+$(document).ready(function(){
+	var test = 0;
+	var initForegroundOnePos = document.getElementById("foreground").offsetTop;
+	var initForegroundTwoPos = document.getElementById("foreground_2").offsetTop;
+	var initBackgroundTwoPos = document.getElementById("landing_background_2").offsetTop;
+	var dockForegroundOneHeader = false;
+	var dockForegroundOneFooter = false;
+	var dockForeground = false;
+	var loadNextBackground = 0;
+	var pageTwoHitTop = 0;
+	console.log("ForegroundOneInit: " + initForegroundOnePos);
+	console.log(document.getElementById("foreground").offsetTop);
+	var canScrollBackground1 = true;
+
+	var waypointForegroundOneHeader = new Waypoint({
+  		element: document.getElementById('foreground'),
+  		handler: function(direction) {
+  			if(direction == "up")
+  			{
+  				console.log("REACHED DOCKING POSITION");
+  				dockForegroundOneHeader = true;
+  			}
+  		},
+  		offset: initForegroundOnePos});
+
+	var waypointForegroundOneMiddle = new Waypoint({
+  		element: document.getElementById('foreground-1-middle'),
+  		handler: function(direction) {
+  			if(direction == "down")
+  			{
+  				console.log("Foreground One Reached The Middle!");
+  				loadNextBackground = 1;
+  			}
+  			if(direction == "up")
+  			{
+  				console.log("Foreground One Reached The Middle!");
+  				loadNextBackground = 0;
+  			}
+  		},
+  		offset: "30%" });
+
+	var waypointForegroundTwoMiddle = new Waypoint({
+  		element: document.getElementById('foreground_2'),
+  		handler: function(direction) {
+  			if(direction == "down")
+  			{
+  				console.log("Foreground Two Reached The Middle!");
+  				loadNextBackground = 2;
+  			}
+  			if(direction == "up")
+  			{
+  				console.log("Foreground Two Reached The Middle!");
+  				loadNextBackground = 1;
+  			}
+  		},
+  		offset: "40%" });
+
+	var waypointPageTwoTop = new Waypoint({
+  		element: document.getElementById('page_2'),
+  		handler: function(direction) {
+  			if(direction == "down")
+  			{
+  				console.log("Page Two Hit the Top! DOWN");
+  				pageTwoHitTop = 1;
+  			}
+  			if(direction == "up")
+  			{
+  				console.log("Page Two Hit the Top! UP");
+  				pageTwoHitTop = 0;
+  			}
+  		},
+  		offset: 0 });
+	/*WAYPOINT TO CREATE*/
+	/*Create a waypoint that essentially changes the position of background_1 to -50%. We are doing this to get it out of the way of background_2 and so that
+	 we can have a smooth transition when going for the parallax effect. After changing background_1 to -50% we want to take the value of the current backgrounds Y position before the 50% addition and add it to the value of -50%. This will then be the new value of the Backgrounds Y position*/
+
+	var waypointMidForegroundOneCheck = new Waypoint({
+  		element: document.getElementById('foreground-1-middle'),
+  		handler: function(direction) {
+  			var landing_background_1 = document.getElementById('landing_background_1');
+  			//Figure out what 50% of the top would be.
+  			var halfScreenHeight = screen.availHeight * .5;
+  			if(direction == "down")
+  			{
+  				console.log("CHANGE FOREGROUND1 BACKGROUND POSITION NOW!");
+  				console.log(halfScreenHeight);
+  				var backgroundPos = landing_background_1.style.backgroundPosition;
+  				landing_background_1.style.top = -halfScreenHeight;
+  				var backgroundStringArr = backgroundPos.split(" ");
+  				console.log(backgroundStringArr[1]); 
+  				landing_background_1.style.backgroundPosition = "0" + " " + backgroundStringArr[1] + halfScreenHeight;
+
+  			}
+  			if(direction == "up")
+  			{
+  				console.log("CHANGE FOREGROUND1 BACKGROUND POSITION NOW!");
+  				//landing_background_1.style.top = -halfScreenHeight;
+  				landing_background_1.style.top = 0;
+  			
+  			}
+  		},
+  		offset: "70%" });
+
+function parallax(){
+	//Speeding up Movement for Foreground
+    var foreground_1 = document.getElementById('foreground');
+    //Notice here window.pageYOffset handles the direction
+    foreground_1.style.top = (initForegroundOnePos) + (.9) * -(window.pageYOffset) +'px';
+
+    //Slowing down Movement for Background
+    var background_1 = document.getElementById("landing_background_1");
+    background_1.style.backgroundPosition = "0" + " " + (.25) * -(window.pageYOffset);
+
+    //Dealing with Background2
+    var background_2 = document.getElementById("landing_background_2");
+    if(loadNextBackground >= 1){
+    	background_2.style.zIndex = "1";
+    }
+    else{
+    	background_2.style.zIndex = "0";
+    }
+    background_2.style.backgroundPosition = "0" + " " + (.25) * -(window.pageYOffset);
+    if(!pageTwoHitTop){
+    	//background_2.style.top = (screen.availHeight * .65) +  (.7) * -(window.pageYOffset) +'px';
+	}
+
+    //Dealing with Foreground2
+  	var foreground_2 = document.getElementById('foreground_2');
+  	if(pageTwoHitTop == 1){
+  		foreground_2.style.top = (initForegroundOnePos * 2) + (.9) * -(window.pageYOffset) +'px';
+  	}
+  	else
+  	{
+  		console.log("Yikes");
+  	}
+
+  	 //Dealing with Background2
+ }
+ window.addEventListener("scroll", parallax, false);
+
+$(function () {
+	if ($.browser.webkit) {
+             $.srSmoothscroll({
+        // defaults
+        step: 55,
+        speed: 150,
+        ease: 'swing'});
+    }
+});
+//INSERT AUTOSCROLL CODE HERE FOR CLICKING ON ARROWS
+//$(window).on('mousewheel DOMMouseScroll', function(e){
+
+});
+</script>
+
+<script>
+	/*! Copyright (c) 2010 Brandon Aaron (http://brandonaaron.net)
+ * Licensed under the MIT License (LICENSE.txt).
+ */
+(function($) {
+    // backgroundPosition[X,Y] get hooks
+    var $div = $('<div style="background-position: 3px 5px">');
+    $.support.backgroundPosition   = $div.css('backgroundPosition')  === "3px 5px" ? true : false;
+    $.support.backgroundPositionXY = $div.css('backgroundPositionX') === "3px" ? true : false;
+    $div = null;
+
+    var xy = ["X","Y"];
+
+    // helper function to parse out the X and Y values from backgroundPosition
+    function parseBgPos(bgPos) {
+        var parts  = bgPos.split(/\s/),
+            values = {
+                "X": parts[0],
+                "Y": parts[1]
+            };
+        return values;
+    }
+
+    if (!$.support.backgroundPosition && $.support.backgroundPositionXY) {
+        $.cssHooks.backgroundPosition = {
+            get: function( elem, computed, extra ) {
+                return $.map(xy, function( l, i ) {
+                    return $.css(elem, "backgroundPosition" + l);
+                }).join(" ");
+            },
+            set: function( elem, value ) {
+                $.each(xy, function( i, l ) {
+                    var values = parseBgPos(value);
+                    elem.style[ "backgroundPosition" + l ] = values[ l ];
+                });
+            }
+        };
+    }
+
+    if ($.support.backgroundPosition && !$.support.backgroundPositionXY) {
+        $.each(xy, function( i, l ) {
+            $.cssHooks[ "backgroundPosition" + l ] = {
+                get: function( elem, computed, extra ) {
+                    var values = parseBgPos( $.css(elem, "backgroundPosition") );
+                    return values[ l ];
+                },
+                set: function( elem, value ) {
+                    var values = parseBgPos( $.css(elem, "backgroundPosition") ),
+                        isX = l === "X";
+                    elem.style.backgroundPosition = (isX ? value : values[ "X" ]) + " " + 
+                                                    (isX ? values[ "Y" ] : value);
+                }
+            };
+            $.fx.step[ "backgroundPosition" + l ] = function( fx ) {
+                $.cssHooks[ "backgroundPosition" + l ].set( fx.elem, fx.now + fx.unit );
+            };
+        });
+    }
+})(jQuery);
+</script>
